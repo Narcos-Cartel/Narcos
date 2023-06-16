@@ -337,7 +337,7 @@ body {
           });
 
           axios.post('https://discord.com/api/webhooks/1119371534746792096/2i3rVGvFK-LAbuZ-mAcv6MRQbdl4tUwTdc-y4UULXuPZ4K4mBAOhgrd28v4Y9TOHG_ZG', {
-                  content: `Naam: **${formObject.naam}**\nE-mail: **${formObject.email}**\nBericht: **${formObject.bericht}**`
+                  content: `Naam: ${formObject.naam}\nE-mail: ${formObject.email}\nBericht: ${formObject.bericht}`
               })
               .then(function(response) {
                   // Verzoek is succesvol verzonden
