@@ -4,197 +4,194 @@
   <title>Narcos Cartel</title>
   <link rel="icon" href="img/narcos 1.png">
   <style>
-
-    @media {
+    
     body {
-      display: flex;
-      text-align: center;
-      flex-direction: column;
-      justify-content: center;
-      background-color: #000;
-      color: #fff;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
+  background-color: #000;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
 
-    #sidebar {
-      height: 100%;
-      background-color: #000;
-      width: 100%;
-      position: fixed;
-      top: 0;
-      left: -100%;
-      transition: left 0.7s ease-in-out;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: flex-start;
-      padding-top: 20px;
-      z-index: 999;
-    }
+#sidebar {
+  background-color: #000;
+  width: 200px;
+  position: fixed;
+  top: 0;
+  left: -300px;
+  transition: left 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 20px;
+  z-index: 999;
+}
 
-    #sidebar.open {
-      left: 0;
-    }
+#sidebar.open {
+  left: 0;
+}
 
-    #sidebar a {
-      margin-top: 1vw;
-      margin-left: 20vw;
-      display: flex;
-      padding: 7vw;
-      width: 110px;
-      margin-bottom: 1.5vw;
-      text-align: center;
-      color: #fff;
-      font-family: Verdana, Geneva, Tahoma, sans-serif;
-      text-align: center;
-      font-size: 3vw;
-      text-decoration: none;
-      background-color: #2d2727;
-      border-radius: 3vw;
-    }
+#sidebar a {
+  margin-left: 140px;
+  display: block;
+  padding: 10px;
+  width: 110px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #fff;
+  font-size: medium;
+  font: message-box;
+  text-decoration: none;
+  background-color: #2d2727;
+  border-radius: 4px;
+}
 
-    #sidebar a:hover {
-      background-color: #514848;
-    }
+#sidebar a:hover {
+  background-color: #514848;
+}
 
-    #header {
-      color: #fff;
-      padding: 1px;
-      font-size: 60px;
-    }
+#header {
+  justify-content: center;
+  display: flex;
+  background-color: #000;
+  color: #fff;
+  padding: 20px;
+}
 
-    #content {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+#content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    #content h1 {
-      font-size: 60px;
-      color: #00ffcc;
-    }
+#content h1 {
+  font-size: 48px;
+  color: #00ffcc;
+}
 
-    #weetjes {
-      width: 100%;
-      height: 40vw;
-      margin: 0 auto;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+#weetjes {
+  width: 100%;
+  height: 400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    #weetjes div {
-      margin-top: 500px ;
-      display: flex;
-      font-family: Georgia, 'Times New Roman', Times, serif;
-      font-size: 20vw;
-      height: 38vw;
-      width: 45vw;
-      background-color: #423d3dca;
-      border: 0.5vw solid #1f1c1c;
-      border-radius: 3vw;
-      justify-content: center;
-      align-items: center;
-    }
+#weetjes div {
+  display: flex;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 70px;
+  height: 110px;
+  width: 150px;
+  background-color: #423d3dca;
+  border: 5px solid #1f1c1c;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+}
 
-    #weetjes div:hover {
-      cursor: pointer;
-      background-color: #000;
-    }
+#weetjes div:hover {
+  cursor: pointer;
+  background-color: #000;
+}
 
-    .popup {
-      position: absolute;
-      width: 45vw;
-      height: 40vw;
-      font-size: 3vw;
-      background-color: #000;
-      padding: 2vw;
-      border-radius: 3vw;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-      z-index: 9999;
-      display: none; /* Verbergt de pop-up standaard */
-    }
+.popup {
+  position: absolute;
+  width: 120px;
+  background-color: #000;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+  display: none; /* Verbergt de pop-up standaard */
+}
 
-    .popup button {
-      border: 0px;
-      width: 7vw;
-      height: 5vw;
-      text-align: center;
-      color: #fff;
-      font-size: 3vw;
-      text-decoration: none;
-      background-color: #2d2727;
-      border-radius: 3vw;
-    }
+.popup button {
+  border: 0px;
+  width: 40px;
+  height: 30px;
+  text-align: center;
+  color: #fff;
+  font-size: small;
+  font: message-box;
+  text-decoration: none;
+  background-color: #2d2727;
+  border-radius: 4px;
+}
 
-    .popup-content {
-      text-align: center;
-    }
+.popup-content {
+  text-align: center;
+}
 
-    .close-btn {
-      display: inline-block;
-      background-color: #f44336;
-      color: #fff;
-      padding: 0.8vw 1.2vw;
-      border-radius: 0.3vw;
-      text-decoration: none;
-      margin-top: 1vw;
-      cursor: pointer;
-    }
+.close-btn {
+  display: inline-block;
+  background-color: #f44336;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 3px;
+  text-decoration: none;
+  margin-top: 10px;
+  cursor: pointer;
+}
 
-    #footer {
-      font-size: 37px;
-      color: #000;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 97%;
-    }
+#footer {
+  background-color: #000;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 97%;
+}
 
-    #footer p {
-      margin: 10px;
-    }
+#footer p {
+  margin: 10px;
+}
 
-    #openSidebarBtn {
-      position: fixed;
-      top: 50px;
-      left: 50px;
-      background-color: #2a2626;
-      color: #fff;
-      font-size: 4vw;
-      border: none;
-      height: 100px;
-      width: 100px;
-      border-radius: 130px;
-      cursor: pointer;
-      z-index: 999;
-    }
+#openSidebarBtn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: #2a2626;
+  color: #fff;
+  font: bolder;
+  font-size: medium;
+  border: none;
+  padding: 18px 25px;
+  border-radius: 150px;
+  cursor: pointer;
+  z-index: 999;
+}
+
+/* Mobile Styles */
+@media (max-width: 1000px) {
+  body {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #000;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
   }
 
-    body {
-      background-color: #000;
-      color: #fff;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    #sidebar {
+  #sidebar {
+    height: 100%;
     background-color: #000;
-    width: 200px;
+    width: 100%;
     position: fixed;
     top: 0;
-    left: -300px;
-    transition: left 0.3s ease-in-out;
+    left: -100%;
+    transition: left 0.7s ease-in-out;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
     padding-top: 20px;
     z-index: 999;
   }
@@ -204,82 +201,79 @@
   }
 
   #sidebar a {
-    margin-left: 140px;
-    display: block;
-    padding: 10px;
+    margin-top: 1vw;
+    margin-left: 20vw;
+    display: flex;
+    padding: 7vw;
     width: 110px;
-    margin-bottom: 20px;
+    margin-bottom: 1.5vw;
     text-align: center;
     color: #fff;
-    font-size: medium;
-    font: message-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    font-size: 3vw;
     text-decoration: none;
     background-color: #2d2727;
-    border-radius: 4px;
+    border-radius: 3vw;
   }
 
+  #sidebar a:hover {
+    background-color: #514848;
+  }
 
+  #header {
+    color: #fff;
+    padding: 1px;
+    font-size: 60px;
+  }
 
+  #content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
+  #content h1 {
+    font-size: 60px;
+    color: #00ffcc;
+  }
 
+  #weetjes {
+    width: 100%;
+    height: 40vw;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
+  #weetjes div {
+    margin-top: 500px;
+    display: flex;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20vw;
+    height: 38vw;
+    width: 45vw;
+    background-color: #423d3dca;
+    border: 0.5vw solid #1f1c1c;
+    border-radius: 3vw;
+    justify-content: center;
+    align-items: center;
+  }
 
-    #sidebar a:hover {
-      background-color: #514848;
-    }
-
-    #header {
-      justify-content: center;
-      display: flex;
-      background-color: #000;
-      color: #fff;
-      padding: 20px;
-    }
-
-    #content {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    #content h1 {
-      font-size: 48px;
-      color: #00ffcc;
-    }
-
-    #weetjes {
-      width: 50%;
-      height: 400px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    #weetjes div {
-      display: flex;
-      font-family: Georgia, 'Times New Roman', Times, serif;
-      font-size: 70px;
-      height: 110px;
-      width: 150px;
-      background-color: #423d3dca;
-      border: 5px solid #1f1c1c;
-      border-radius: 5px;
-      justify-content: center;
-      align-items: center;
-    }
-
-    #weetjes div:hover {
-      cursor: pointer;
-      background-color: #000;
-    }
-
-    .popup {
-    position: absolute;
-    width: 120px;
+  #weetjes div:hover {
+    cursor: pointer;
     background-color: #000;
-    padding: 20px;
-    border-radius: 5px;
+  }
+
+  .popup {
+    position: absolute;
+    width: 45vw;
+    height: 40vw;
+    font-size: 3vw;
+    background-color: #000;
+    padding: 7vw;
+    border-radius: 3vw;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     z-index: 9999;
     display: none; /* Verbergt de pop-up standaard */
@@ -287,16 +281,15 @@
 
   .popup button {
     border: 0px;
-    width: 40px;
-    height: 30px;
+    width: 15vw;
+    height: 7vw;
     text-align: center;
     color: #fff;
-    font-size: small;
-    font: message-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 2.5vw;
     text-decoration: none;
     background-color: #2d2727;
-    border-radius: 4px;
-    
+    border-radius: 3vw;
   }
 
   .popup-content {
@@ -307,44 +300,44 @@
     display: inline-block;
     background-color: #f44336;
     color: #fff;
-    padding: 8px 12px;
+    padding: 2.5vw 4vw;
     border-radius: 3px;
     text-decoration: none;
-    margin-top: 10px;
+    margin-top: 5vw;
     cursor: pointer;
   }
 
+  #footer {
+    background-color: #000;
+    color: #fff;
+    padding: 1px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
 
+  #footer p {
+    margin: 1px;
+  }
 
-    #footer {
-      background-color: #000;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 97%;
-    }
+  #openSidebarBtn {
+    position: fixed;
+    top: 3vw;
+    left: 3vw;
+    background-color: #2a2626;
+    color: #fff;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 40px;
+    border: none;
+    padding: 4vw 5.5vw;
+    border-radius: 70px;
+    cursor: pointer;
+    z-index: 999;
+  }
+}
 
-    #footer p {
-      margin: 10px;
-    }
-
-    #openSidebarBtn {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      background-color: #2a2626;
-      color: #fff;
-      font: bolder;
-      font-size: medium;
-      border: none;
-      padding: 18px 25px;
-      border-radius: 150px;
-      cursor: pointer;
-      z-index: 999;
-    }
   </style>
 </head>
 <body>
@@ -354,16 +347,13 @@
     <a href="contact.html">Contact</a>
     <a href="https://discord.gg/5DH7ueEECP">Discord</a>
   </div>
-  
-  
-  
 
   <button id="openSidebarBtn">☰</button>
 
   <div id="header">
     <h1>Welkom In Narcos Cartel AFR</h1>
   </div>
-  
+
   <div id="content">
     <h1 id="dynamicText">Welkom!</h1>
   </div>
@@ -371,7 +361,7 @@
   <div id="weetjes">
     <div onclick="showPopup('wat hier?')">?</div>
   </div>
-  
+
   <div class="popup" id="popup">
     <div class="popup-content">
       <h1>Contact ons</h1>
@@ -379,7 +369,6 @@
       <a href="#" class="close-btn" onclick="hidePopup()">Sluiten</a>
     </div>
   </div>
-  
 
   <div id="footer">
     <p>&copy; 2023 Narcos Cartel. Alle rechten voorbehouden.</p>
@@ -403,27 +392,26 @@
     openSidebarBtn.addEventListener('click', () => {
       sidebar.classList.toggle('open');
     });
-  
 
     const weetjesDivs = document.querySelectorAll('#weetjes div');
-  const popup = document.getElementById('popup');
-  const popupText = document.getElementById('popupText');
+    const popup = document.getElementById('popup');
+    const popupText = document.getElementById('popupText');
 
-  weetjesDivs.forEach((div, index) => {
-    div.addEventListener('click', (event) => {
-      const rect = div.getBoundingClientRect(); // Haal de positie van het weetje op
+    weetjesDivs.forEach((div, index) => {
+      div.addEventListener('click', (event) => {
+        const rect = div.getBoundingClientRect(); // Haal de positie van het weetje op
 
-      popup.style.top = `${rect.top}px`; // Pas de verticale positie van de pop-up aan
-      popup.style.left = `${rect.left}px`; // Pas de horizontale positie van de pop-up aan
-      popup.style.display = 'block';
+        popup.style.top = `${rect.top}px`; // Pas de verticale positie van de pop-up aan
+        popup.style.left = `${rect.left}px`; // Pas de horizontale positie van de pop-up aan
+        popup.style.display = 'block';
 
-      event.stopPropagation(); // Stop de gebeurtenis van het weetje om te voorkomen dat de pop-up meteen weer verdwijnt
+        event.stopPropagation(); // Stop de gebeurtenis van het weetje om te voorkomen dat de pop-up meteen weer verdwijnt
+      });
     });
-  });
 
-  function hidePopup() {
-    popup.style.display = 'none';
-  }
+    function hidePopup() {
+      popup.style.display = 'none';
+    }
   </script>
 </body>
 </html>
