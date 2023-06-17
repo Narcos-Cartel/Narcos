@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sollicitatie</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      margin: 0;
+      padding: 20px;
+    }
+
+    #sidebar {
+    background-color: #000;
+    width: 200px;
+    position: fixed;
+    top: 0;
+    left: -300px;
+    transition: left 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 20px;
+    z-index: 999;
+  }
+
+  #sidebar.open {
+    left: 0;
+  }
+
+  #sidebar a {
+    margin-left: 140px;
+    display: block;
+    padding: 10px;
+    width: 110px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #fff;
+    font-size: medium;
+    font: message-box;
+    text-decoration: none;
+    background-color: #2d2727;
+    border-radius: 4px;
+  }
+
+  #openSidebarBtn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background-color: #2a2626;
+      color: #fff;
+      font: bolder;
+      font-size: medium;
+      border: none;
+      padding: 18px 25px;
+      border-radius: 150px;
+      cursor: pointer;
+      z-index: 999;
+    }
+
+    #sidebar a:hover {
+      background-color: #514848;
+    }
+
+    h2 {
+      text-align: center;
+      color: #fff;
+    }
+
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      background-color: #2a2626;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #fff;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    textarea {
+      background-color: #463d3d;
+      color: #fff;
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      box-sizing: border-box;
+      margin-bottom: 10px;
+    }
+
+
+    textarea {
+      resize: none;
+      height: 100px;
+    }
+
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    #discord-login {
+      margin-bottom: 10px;
+      padding: 8px;
+      border-radius: 5px;
+      background-color: #463d3d;
+      border: none;
+      color: #fff;
+    }
+
+    #discord-username {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+    <div id="sidebar">
+        <a href="index.html">Home</a>
+        <a href="team.html">Leiding</a>
+        <a href="contact.html">Contact</a>
+        <a href="sollicitatie.html">Sollicitatie</a>
+        <a href="https://discord.gg/5DH7ueEECP">Discord</a>
+    </div>
+      
+    <button id="openSidebarBtn">☰</button>
+
+  <h2>Sollicitatieformulier</h2>
+
+  
+  
+  <form id="application-form" method="post">
+    <button id="discord-login">Login met Discord</button>
+
+    <label for="naam">Naam:</label>
+    <input type="text" id="naam" name="naam" placeholder="Druk op: (Login met Discord)" required readonly>
+    
+    <label for="leeftijd">Leeftijd:</label>
+    <input type="number" id="leeftijd" name="leeftijd" required>
+    
+    <label for="motivatie">Motivatie:</label>
+    <textarea id="motivatie" name="motivatie" required></textarea>
+    
+    <label for="ervaring">Ervaring:</label>
+    <textarea id="ervaring" name="ervaring" required></textarea>
+    
+    <label for="pluspunten">3+ punten:</label>
+    <textarea id="pluspunten" name="pluspunten" required></textarea>
+    
+    <label for="minpunten">3- punten:</label>
+    <textarea id="minpunten" name="minpunten" required></textarea>
+    
+    <label for="waarom-narcos">Waarom NARCOS?</label>
+    <textarea id="waaromnarcos" name="waaromnarcos" required></textarea>
+    
+    <label for="bezittingen">Bezittingen:</label>
+    <textarea id="bezittingen" name="bezittingen" required></textarea>
+    
+    <label for="playtime">Playtime:</label>
+    <input type="text" id="playtime" name="playtime" required>
+    
+    <input type="submit" value="Solliciteren" id="submit-btn">
+  </form>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    // Menu
+    const sidebar = document.getElementById('sidebar');
+    const openSidebarBtn = document.getElementById('openSidebarBtn');
+
+    openSidebarBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+    });
+
+    // login
+    const discordLoginButton = document.getElementById('discord-login');
+    discordLoginButton.addEventListener('click', () => {
+      discordLoginButton.style.display = "none"
+      // Stuur gebruiker naar de Discord OAuth 2.0-verificatiepagina
+      window.location.href = 'https://discord.com/api/oauth2/authorize?client_id=1119652229390024794&redirect_uri=http%3A%2F%2F127.0.0.1%3A5500%2Fsollicitatie.html&response_type=code&scope=identify';
+    });
+
+    // Verwerk de OAuth 2.0-terugkeer van Discord
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get('code');
+    if (code) {
+      // Ruil de autorisatiecode in voor een toegangstoken
+      const tokenEndpoint = 'https://discord.com/api/oauth2/token';
+      const data = {
+        client_id: '1119652229390024794',
+        client_secret: 'F5kusp0rg_DQhBR8U3G2fto5cEzmsOOH',
+        grant_type: 'authorization_code',
+        code: code,
+        redirect_uri: 'http://127.0.0.1:5500/sollicitatie.html',
+        scope: 'identify'
+      };
+
+      fetch(tokenEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: new URLSearchParams(data)
+      })
+      .then(response => response.json())
+      .then(tokenData => {
+        // Haal de gebruikersinformatie op met het verkregen toegangstoken
+        const userEndpoint = 'https://discord.com/api/users/@me';
+        fetch(userEndpoint, {
+          headers: {
+            'Authorization': `Bearer ${tokenData.access_token}`
+          }
+        })
+        .then(response => response.json())
+        .then(user => {
+          // Plaats de Discord-gebruikersnaam in het "Naam"-veld
+          const naamInput = document.getElementById('naam');
+          naamInput.value = `${user.username}#${user.discriminator}`;
+        })
+        .catch(error => {
+          console.error('Fout bij het ophalen van de gebruikersinformatie:', error);
+        });
+      })
+      .catch(error => {
+        console.error('Fout bij het inruilen van de autorisatiecode voor een toegangstoken:', error);
+      });
+    }
+
+    // webhook
+    // Bericht verzenden naar Discord-webhook
+    document.getElementById('application-form').addEventListener('submit', function(event) {
+          event.preventDefault(); // Voorkomt dat het formulier standaard wordt verzonden
+
+          var submitBtn = document.getElementById('submit-btn');
+          submitBtn.value = 'Bezig met verzenden...';
+          submitBtn.disabled = true;
+
+          var formData = new FormData(event.target);
+          var formObject = {};
+          formData.forEach(function(value, key) {
+              formObject[key] = value;
+          });
+
+          axios.post('https://discord.com/api/webhooks/1119371534746792096/2i3rVGvFK-LAbuZ-mAcv6MRQbdl4tUwTdc-y4UULXuPZ4K4mBAOhgrd28v4Y9TOHG_ZG', {
+                  content: `Naam: **${formObject.naam}**\nLeeftijd: **${formObject.leeftijd}**\nMotivatie: **${formObject.motivatie}**\nErvaring: **${formObject.ervaring}**\nPluspunten: **${formObject.pluspunten}**\nMinpunten: **${formObject.minpunten}**\nWaarom Narcos: **${formObject.waaromnarcos}**\nBezittingen: **${formObject.bezittingen}**\nPlaytime: **${formObject.playtime}**`
+              })
+              .then(function(response) {
+                  // Verzoek is succesvol verzonden
+                  console.log(response.data);
+                  submitBtn.value = 'Verzonden';
+                  event.target.reset();
+              })
+              .catch(function(error) {
+                  // Fout bij het verzenden van het verzoek
+                  console.error(error);
+                  submitBtn.value = 'Fout bij verzenden';
+              })
+              .finally(function() {
+                  submitBtn.disabled = false;
+              });
+      });
+    
+  </script>
+</body>
+</html>
