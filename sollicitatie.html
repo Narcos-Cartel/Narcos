@@ -192,7 +192,7 @@
     discordLoginButton.addEventListener('click', () => {
       discordLoginButton.style.display = "none"
       // Stuur gebruiker naar de Discord OAuth 2.0-verificatiepagina
-      window.location.href = 'https://discord.com/api/oauth2/authorize?client_id=1119652229390024794&redirect_uri=http%3A%2F%2F127.0.0.1%3A5500%2Fsollicitatie.html&response_type=code&scope=identify';
+      window.location.href = 'https://discord.com/api/oauth2/authorize?client_id=1119652229390024794&redirect_uri=https%3A%2F%2Fnarcos-cartel.github.io%2FNarcos%2Fsollicitatie.html&response_type=code&scope=identify';
     });
 
     // Verwerk de OAuth 2.0-terugkeer van Discord
@@ -206,7 +206,7 @@
         client_secret: 'F5kusp0rg_DQhBR8U3G2fto5cEzmsOOH',
         grant_type: 'authorization_code',
         code: code,
-        redirect_uri: 'http://127.0.0.1:5500/sollicitatie.html',
+        redirect_uri: 'https://narcos-cartel.github.io/Narcos/sollicitatie.html',
         scope: 'identify'
       };
 
@@ -256,7 +256,7 @@
               formObject[key] = value;
           });
 
-          axios.post('https://discord.com/api/webhooks/1119371534746792096/2i3rVGvFK-LAbuZ-mAcv6MRQbdl4tUwTdc-y4UULXuPZ4K4mBAOhgrd28v4Y9TOHG_ZG', {
+          axios.post('https://discord.com/api/webhooks/1119675763914985482/wun_sntm2J9xBkuEmPAjHgFFbbCkZ--dYNgOsBjcX_9P0kZoyIFeBlbjT1BwnZGScHkp', {
                   content: `Naam: **${formObject.naam}**\nLeeftijd: **${formObject.leeftijd}**\nMotivatie: **${formObject.motivatie}**\nErvaring: **${formObject.ervaring}**\nPluspunten: **${formObject.pluspunten}**\nMinpunten: **${formObject.minpunten}**\nWaarom Narcos: **${formObject.waaromnarcos}**\nBezittingen: **${formObject.bezittingen}**\nPlaytime: **${formObject.playtime}**`
               })
               .then(function(response) {
