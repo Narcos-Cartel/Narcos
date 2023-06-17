@@ -8,9 +8,6 @@
 body {
       font-family: Arial, sans-serif;
       background-color: #000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       height: 100vh;
       margin: 0;
     }
@@ -64,15 +61,11 @@ body {
       z-index: 999;
     }
 
-
-
-
-
-
-
     #sidebar a:hover {
       background-color: #514848;
     }
+
+    
 
     .container {
     width: 600px;
@@ -88,10 +81,7 @@ body {
     transform: translate(-50%, -50%);
     }
 
-    .container h2 {
-      color: #fff;
-      text-align: center;
-    }
+    
 
     .container input[type="text"],
     .container textarea {
@@ -226,12 +216,7 @@ body {
 }
 
 
-    h2 {
-      color: #fff;
-      text-align: center;color: #fff;
-      padding: 20px;
-      font-size: 60px;
-    }
+
 
     .container input[type="text"],
     .container textarea {
@@ -292,16 +277,18 @@ body {
   </style>
 </head>
 <body>
+
+
   <div id="sidebar">
       <a href="index.html">Home</a>
       <a href="team.html">Leiding</a>
       <a href="contact.html">Contact</a>
+      <a href="sollicitatie.html">Sollicitatie</a>
       <a href="https://discord.gg/5DH7ueEECP">Discord</a>
   </div>
     
   <button id="openSidebarBtn">☰</button>
 
-  <h2>Contactformulier</h2>
 
   <div class="container">
       <form id="contact-form" method="post">
@@ -337,7 +324,7 @@ body {
           });
 
           axios.post('https://discord.com/api/webhooks/1119371534746792096/2i3rVGvFK-LAbuZ-mAcv6MRQbdl4tUwTdc-y4UULXuPZ4K4mBAOhgrd28v4Y9TOHG_ZG', {
-                  content: `Naam: ${formObject.naam}\nE-mail: ${formObject.email}\nBericht: ${formObject.bericht}`
+                  content: `Naam: **${formObject.naam}**\nE-mail: **${formObject.email}**\nBericht: **${formObject.bericht}**`
               })
               .then(function(response) {
                   // Verzoek is succesvol verzonden
