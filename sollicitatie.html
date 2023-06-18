@@ -127,6 +127,154 @@
     #discord-username {
       color: #fff;
     }
+
+    @media (max-width: 1000px) {
+      body {
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      margin: 0;
+      padding: 20px;
+    }
+
+    #sidebar {
+    height: 100%;
+    background-color: #000;
+    width: 100%;
+    top: 0;
+    left: -100%;
+    transition: left 0.7s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: center;
+    padding-top: 20px;
+    z-index: 999;
+  }
+
+    #sidebar.open {
+      left: 0;
+    }
+
+    #sidebar a {
+      margin-top: 1vw;
+      display: flex;
+      margin-left: 20vw;
+      padding: 7vw;
+      width: 120px;
+      margin-bottom: 1.5vw;
+      text-align: center;
+      color: #fff;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 3vw;
+      text-decoration: none;
+      background-color: #2d2727;
+      border-radius: 3vw;
+      justify-content: center; /* Voegt horizontale uitlijning in het midden toe */
+      align-items: center; /* Voegt verticale uitlijning in het midden toe */
+    }
+
+
+  #openSidebarBtn {
+    position: fixed;
+    top: 3vw;
+    left: 3vw;
+    background-color: #2a2626;
+    color: #fff;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 40px;
+    border: none;
+    padding: 4vw 5.5vw;
+    border-radius: 70px;
+    cursor: pointer;
+    z-index: 999;
+  }
+
+    #sidebar a:hover {
+      background-color: #514848;
+    }
+
+    h2 {
+      font-size: 40px;
+      margin-top: 90px;
+      text-align: center;
+      color: #fff;
+    }
+
+    form {
+      max-width: 800px;
+      height: 2000px;
+      margin: 0 auto;
+      background-color: #2a2626;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 30px;
+      color: #fff;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    textarea {
+      font-size: 25px;
+      background-color: #463d3d;
+      color: #fff;
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      box-sizing: border-box;
+      margin-bottom: 10px;
+    }
+
+    input[type="number"] {
+      height: 50px;
+    }
+
+    input[type="text"] {
+      height: 50px;
+    }
+
+
+    textarea {
+      resize: none;
+      height: 200px;
+    }
+
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: #fff;
+      width: 400px;
+      height: 90px;
+      border: none;
+      border-radius: 14px;
+      font-size: 50px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    #discord-login {
+      margin-bottom: 10px;
+      padding: 20px;
+      font-size: 20px;
+      border-radius: 5px;
+      background-color: #463d3d;
+      border: none;
+      color: #fff;
+    }
+
+    #discord-username {
+      color: #fff;
+    }
+    }
   </style>
 </head>
 <body>
@@ -192,7 +340,7 @@
     discordLoginButton.addEventListener('click', () => {
       discordLoginButton.style.display = "none"
       // Stuur gebruiker naar de Discord OAuth 2.0-verificatiepagina
-      window.location.href = 'https://discord.com/api/oauth2/authorize?client_id=1119652229390024794&redirect_uri=https%3A%2F%2Fnarcos-cartel.github.io%2FNarcos%2Fsollicitatie.html&response_type=code&scope=identify';
+      window.location.href = 'https://discord.com/api/oauth2/authorize?client_id=1119652229390024794&redirect_uri=http%3A%2F%2F127.0.0.1%3A5500%2Fsollicitatie.html&response_type=code&scope=identify';
     });
 
     // Verwerk de OAuth 2.0-terugkeer van Discord
@@ -206,7 +354,7 @@
         client_secret: 'F5kusp0rg_DQhBR8U3G2fto5cEzmsOOH',
         grant_type: 'authorization_code',
         code: code,
-        redirect_uri: 'https://narcos-cartel.github.io/Narcos/sollicitatie.html',
+        redirect_uri: 'http://127.0.0.1:5500/sollicitatie.html',
         scope: 'identify'
       };
 
@@ -256,7 +404,7 @@
               formObject[key] = value;
           });
 
-          axios.post('https://discord.com/api/webhooks/1119675763914985482/wun_sntm2J9xBkuEmPAjHgFFbbCkZ--dYNgOsBjcX_9P0kZoyIFeBlbjT1BwnZGScHkp', {
+          axios.post('https://discord.com/api/webhooks/1119371534746792096/2i3rVGvFK-LAbuZ-mAcv6MRQbdl4tUwTdc-y4UULXuPZ4K4mBAOhgrd28v4Y9TOHG_ZG', {
                   content: `Naam: **${formObject.naam}**\nLeeftijd: **${formObject.leeftijd}**\nMotivatie: **${formObject.motivatie}**\nErvaring: **${formObject.ervaring}**\nPluspunten: **${formObject.pluspunten}**\nMinpunten: **${formObject.minpunten}**\nWaarom Narcos: **${formObject.waaromnarcos}**\nBezittingen: **${formObject.bezittingen}**\nPlaytime: **${formObject.playtime}**`
               })
               .then(function(response) {
