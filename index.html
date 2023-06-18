@@ -184,7 +184,6 @@
     height: 100%;
     background-color: #000;
     width: 100%;
-    position: fixed;
     top: 0;
     left: -100%;
     transition: left 0.7s ease-in-out;
@@ -192,30 +191,32 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    text-align: center;
     padding-top: 20px;
     z-index: 999;
   }
 
-  #sidebar.open {
-    left: 0;
-  }
+    #sidebar.open {
+      left: 0;
+    }
 
-  #sidebar a {
-    margin-top: 1vw;
-    margin-left: 20vw;
-    display: flex;
-    padding: 7vw;
-    width: 110px;
-    margin-bottom: 1.5vw;
-    text-align: center;
-    color: #fff;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    text-align: center;
-    font-size: 3vw;
-    text-decoration: none;
-    background-color: #2d2727;
-    border-radius: 3vw;
-  }
+    #sidebar a {
+      margin-top: 1vw;
+      display: flex;
+      margin-left: 20vw;
+      padding: 7vw;
+      width: 120px;
+      margin-bottom: 1.5vw;
+      text-align: center;
+      color: #fff;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 3vw;
+      text-decoration: none;
+      background-color: #2d2727;
+      border-radius: 3vw;
+      justify-content: center; /* Voegt horizontale uitlijning in het midden toe */
+      align-items: center; /* Voegt verticale uitlijning in het midden toe */
+    }
 
   #sidebar a:hover {
     background-color: #514848;
