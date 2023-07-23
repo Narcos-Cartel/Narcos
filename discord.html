@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+
+    body {
+        background-color: #000;
+    }
+
+    #sidebar {
+    background-color: #000;
+    width: 200px;
+    position: fixed;
+    top: 0;
+    left: -300px;
+    transition: left 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 20px;
+    z-index: 999;
+  }
+
+  #sidebar.open {
+    left: 0;
+  }
+
+  #sidebar a {
+    margin-left: 140px;
+    display: block;
+    padding: 10px;
+    width: 110px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #fff;
+    font-size: medium;
+    font: message-box;
+    text-decoration: none;
+    background-color: #2d2727;
+    border-radius: 4px;
+  }
+
+  #openSidebarBtn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background-color: #2a2626;
+      color: #fff;
+      font: bolder;
+      font-size: medium;
+      border: none;
+      padding: 18px 25px;
+      border-radius: 150px;
+      cursor: pointer;
+      z-index: 999;
+    }
+
+    #sidebar a:hover {
+      background-color: #514848;
+    }
+
+    /* CSS to center the iframe */
+    .centered-iframe {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    
+
+  </style>
+</head>
+<body>
+
+    <div id="sidebar">
+        <a href="index.html">Home</a>
+        <a href="team.html">Leiding</a>
+        <a href="contact.html">Contact</a>
+        <a href="sollicitatie.html">Sollicitatie</a>
+        <a href="https://discord.gg/5DH7ueEECP">Discord</a>
+      </div>
+    
+      <button id="openSidebarBtn">☰</button>
+
+  <div class="centered-iframe">
+    <iframe src="https://discord.com/widget?id=1086968250442719352&theme=dark" width="1050" height="700" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+  </div>
+
+  <script>
+    const sidebar = document.getElementById('sidebar');
+    const openSidebarBtn = document.getElementById('openSidebarBtn');
+
+    openSidebarBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
