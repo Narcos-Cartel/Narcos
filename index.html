@@ -54,10 +54,30 @@
 #header {
   justify-content: center;
   display: flex;
-  background-color: #000;
-  color: #fff;
   padding: 20px;
 }
+ 
+#header h1 {
+  background: linear-gradient(to right, #ff0000a9, #2825e6a5, #dcb51ab4);
+  -moz-background-clip: text;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: fade 3s infinite;
+}
+
+@keyframes fade {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 100%;
+  }
+}
+
+
+
+
 
 #content {
   display: flex;
@@ -137,19 +157,46 @@
 }
 
 #footer {
-  background-color: #000;
   color: #fff;
-  padding: 20px;
   text-align: center;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 97%;
+  position: relative;
+  width: 100%;
+  margin-top: auto;
 }
 
-#footer p {
-  margin: 10px;
+#gang {
+  margin-top: 110px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
 }
+
+#gang img {
+  margin-left: 30px;
+  width: 900px;
+  height: 450px;
+  border-radius: 70px;
+}
+
+#gang h3 {
+  margin-top: 30px;
+  margin-left: 50px;
+  font-size: 70px;
+  background: linear-gradient(to bottom right, #ff0000e9, #ff3b3b05);
+  -moz-background-clip: text;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: fade 3s infinite;
+}
+
+
+
+
+
+
+
+
 
 #openSidebarBtn {
   position: fixed;
@@ -348,7 +395,7 @@
     <a href="team.html">Leiding</a>
     <a href="contact.html">Contact</a>
     <a href="sollicitatie.html">Sollicitatie</a>
-    <a href="https://discord.gg/5DH7ueEECP">Discord</a>
+    <a href="discord.html"">Discord</a>
   </div>
 
   <button id="openSidebarBtn">☰</button>
@@ -363,6 +410,11 @@
 
   <div id="weetjes">
     <div onclick="showPopup('wat hier?')">?</div>
+  </div>
+
+  <div id="gang">
+    <img src="img/gang1.png" alt="narcos">
+    <h3>De beste<br>gang</h3>
   </div>
 
   <div class="popup" id="popup">
@@ -415,6 +467,14 @@
     function hidePopup() {
       popup.style.display = 'none';
     }
+
+
+  
+
+
+
+
+
   </script>
 </body>
 </html>
