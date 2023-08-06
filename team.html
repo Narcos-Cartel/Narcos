@@ -360,10 +360,6 @@ body {
 
   <button id="openSidebarBtn">☰</button>
 
-  <h1>Team</h1>
-    <ul id="team-list">
-        <!-- De eigenaren en mede-eigenaren zullen hier worden weergegeven -->
-    </ul>
 
   <div id="content">
     <div onclick="toggleTransform(this)" class="team-section" style="background-color: #F44336;">
@@ -453,52 +449,7 @@ body {
 
     // team
 
-    const botToken = "MTEwMDA4MDE2MjUyNTE1NTQzOA.GdZ0Lq.LOFXIrXTJllS_6WQMId7RwBnjmB0GQDnFStVFM";
-
-// Functie om de eigenaren en mede-eigenaren op te halen en weer te geven
-async function getTeamMembers() {
-    try {
-        // Voer een AJAX-request uit naar de Discord API om serverinformatie op te halen
-        const response = await fetch("https://discord.com/api/guilds/1086968250442719352/members", {
-            headers: {
-                Authorization: `Bot ${botToken}`
-            }
-        });
-
-        // Controleer of de request succesvol was
-        if (!response.ok) {
-            throw new Error("Failed to fetch team members");
-        }
-
-        // Verwerk de JSON-gegevens
-        const data = await response.json();
-
-        // Filter de leden op basis van hun rollen (pas de rollen naar jouw server aan)
-        const owners = data.filter(member => member.roles.includes("1086968250488848452"));
-        const coOwners = data.filter(member => member.roles.includes("1086968250488848449"));
-
-        // Bouw de lijst van eigenaren en mede-eigenaren
-        const teamList = document.getElementById("team-list");
-
-        owners.forEach(owner => {
-            const listItem = document.createElement("li");
-            listItem.textContent = `Eigenaar: ${owner.user.username}`;
-            teamList.appendChild(listItem);
-        });
-
-        coOwners.forEach(coOwner => {
-            const listItem = document.createElement("li");
-            listItem.textContent = `Mede-eigenaar: ${coOwner.user.username}`;
-            teamList.appendChild(listItem);
-        });
-
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-// Roep de functie op om de eigenaren en mede-eigenaren op te halen wanneer de pagina is geladen
-window.addEventListener("load", getTeamMembers);
+    
   </script>
 </body>
 </html>
