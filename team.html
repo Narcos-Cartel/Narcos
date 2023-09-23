@@ -52,9 +52,28 @@ body {
     }
 
     #header {
-      background-color: #000;
+      justify-content: center;
+      display: flex;
       padding: 20px;
+    }
+    
+    #header h1 {
+      background: linear-gradient(to right, #ff0000a9, #2825e6a5, #dcb51ab4);
+      -moz-background-clip: text;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: fade 3s infinite;
       text-align: center;
+    }
+
+    @keyframes fade {
+      0% {
+        background-position: 0%;
+      }
+      100% {
+        background-position: 100%;
+      }
     }
 
     #content {
@@ -364,54 +383,35 @@ body {
     <div onclick="toggleTransform(this)" class="team-section" style="background-color: #F44336;">
       <h3>Jefe</h3>
       <ul>
-        <li>Xabi</li>
+        <li>Lucien</li>
+        <li>Shur</li>
       </ul>
       <div class="team-info">
-        <p>Xabi#6586</p>
+        <p>trupinda<br>shur_hk7</p>
       </div>
     </div>
 
     <div onclick="toggleTransform(this)" class="team-section" style="background-color: #36a2eb;">
       <h3>Subjefe</h3>
       <ul>
-        <li>Lucien</li>
+        <li>Mylan</li>
+        <li>Stille</li>
       </ul>
       <div class="team-info">
-        <p>trupinda#7865</p>
+        <p>! Mylan#1510<br>pitto47k</p>
       </div>
     </div>
 
     <div onclick="toggleTransform(this)" class="team-section" style="background-color: #ff6384;">
       <h3>Capitan</h3>
       <ul>
-        <li>Henk</li>
-        <li>Omar</li>
+        <li>Pascal</li>
+        <li>Relax</li>
       </ul>
       <div class="team-info">
-        <p>henk__<br>mosab5408</p>
+        <p>trupass1995<br>relaxjeeee</p>
       </div>
     </div>
-
-    <div onclick="toggleTransform(this)" class="team-section" style="background-color: #ff9f40;">
-      <h3>Teniente</h3>
-      <ul>
-        <li>Blanco</li>
-      </ul>
-      <div class="team-info">
-        <p>blanco0885</p>
-      </div>
-    </div>
-
-    <div onclick="toggleTransform(this)" class="team-section" style="background-color: #00cc99;">
-      <h3>Commandante</h3>
-      <ul>
-        <li>Elpako</li>
-      </ul>
-      <div class="team-info">
-        <p>Elpako#1302</p>
-      </div>
-    </div>
-  </div>
 
   <div id="footer">
     <p>&copy; 2023 Narcos Cartel. Alle rechten voorbehouden.</p>
